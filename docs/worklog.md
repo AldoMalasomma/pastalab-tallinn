@@ -35,7 +35,7 @@
 
 - Added a shared SEO helper in `src/components/Seo.astro` so canonical URLs, hreflang alternates, Open Graph basics, and robots directives are generated consistently from the shared layout.
 - Added localized page titles and descriptions to the homepage, menu, and booking content sources so metadata stays close to the copy it represents.
-- Configured the Astro `site` value from `SITE_URL` with a local fallback so the same SEO code can resolve to the deployed origin in production.
+- Configured the Astro `site` value from `SITE_URL` so the same SEO code can resolve to the deployed origin in production.
 - Kept the root gateway intentionally `noindex` and pointed it at the default localized entry so it does not compete with the indexed locale pages.
 - Updated the backlog and implementation notes to reflect that page-level SEO is now in place and that the next gaps are operational and visual rather than structural.
 
@@ -201,3 +201,10 @@
 - Switched the production adapter from `@astrojs/node` to `@astrojs/vercel` so the current SSR and Astro Action setup matches the intended hosting target.
 - Kept the locale routing, booking flow, canonical URL handling, and SEO layer unchanged while aligning the output to Vercel's deployment model.
 - Documented the required `SITE_URL` environment variable and the adapter choice so the first public release can be deployed without extra platform scaffolding.
+
+## 2026-04-02 - Lighthouse cleanup pass
+
+- Replaced the browser-side `astro:actions` import in the booking form with a same-origin POST enhancement so the production console stays clean while preserving the Astro Action flow.
+- Removed the hardcoded `http://localhost:4321` site fallback from Astro config so deployed metadata no longer carries a localhost-origin default.
+- Downgraded the booking visual slot title from a semantic heading to a caption-style label so the homepage and booking pages keep a valid heading tree.
+- Kept the booking UI, validation states, and visible design unchanged apart from the semantic and runtime cleanup needed for production QA.

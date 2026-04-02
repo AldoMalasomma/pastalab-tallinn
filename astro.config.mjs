@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
 
-const site = process.env.SITE_URL ?? "http://localhost:4321";
+const site = process.env.SITE_URL;
 
 export default defineConfig({
   output: "server",

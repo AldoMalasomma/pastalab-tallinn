@@ -279,7 +279,7 @@ const bookingActionPath = getActionPath(actions.bookingRequest);
 </main>
 
 <script type="module">
-  import { actions, isInputError } from "astro:actions";
+  import { parse as parseDevalue } from "devalue";
 
   const form = document.querySelector("[data-booking-form]");
   const formPanel = document.querySelector("[data-booking-form-panel]");
@@ -348,6 +348,51 @@ const bookingActionPath = getActionPath(actions.bookingRequest);
     }
   };
 
+  const isInputError = (error) =>
+    typeof error === "object" &&
+    error !== null &&
+    "type" in error &&
+    error.type === "AstroActionInputError" &&
+    "fields" in error &&
+    typeof error.fields === "object" &&
+    error.fields !== null;
+
+  const submitBookingRequest = async (bookingForm) => {
+    const response = await fetch(bookingForm.action, {
+      method: "POST",
+      body: new FormData(bookingForm),
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    const bodyText = await response.text();
+
+    if (response.ok) {
+      if (response.status === 204 || bodyText.length === 0) {
+        return { data: void 0, error: void 0 };
+      }
+
+      return {
+        data: parseDevalue(bodyText),
+        error: void 0,
+      };
+    }
+
+    let errorBody;
+    try {
+      errorBody = JSON.parse(bodyText);
+    } catch {
+      errorBody = {
+        type: "AstroActionError",
+        code: "INTERNAL_SERVER_ERROR",
+        message: bodyText || "Booking request failed.",
+      };
+    }
+
+    return { data: void 0, error: errorBody };
+  };
+
   form.addEventListener("input", (event) => {
     const target = event.target;
     if (target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement) {
@@ -368,7 +413,7 @@ const bookingActionPath = getActionPath(actions.bookingRequest);
     setPendingState(true);
 
     try {
-      const result = await actions.bookingRequest(new FormData(form));
+      const result = await submitBookingRequest(form);
 
       if (result.error) {
         if (isInputError(result.error)) {

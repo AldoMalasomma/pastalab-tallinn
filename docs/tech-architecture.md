@@ -37,7 +37,7 @@ Astro i18n is configured in `astro.config.mjs` with:
 - locales: `it`, `en`, `et`, `ru`
 - `prefixDefaultLocale: true`
 - `redirectToDefaultLocale: false`
-- `site` is sourced from `SITE_URL` with a local development fallback so canonical URLs resolve to the deployed origin when configured.
+- `site` is sourced from `SITE_URL`; set that env var in production so canonical URLs and structured data resolve to the deployed origin without a localhost fallback.
 - `output` is `server`, which keeps Astro Actions available in the Vercel serverless runtime.
 - the Vercel adapter emits the `.vercel/output` build artifacts automatically, so no extra deployment wrapper is required.
 

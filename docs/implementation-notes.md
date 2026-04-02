@@ -46,7 +46,7 @@
 - Starter assets and the `Welcome.astro` scaffold were removed as part of the cleanup.
 - Astro's default-locale redirect is disabled so the branded `/` gateway can coexist with the locale-prefixed routes without build conflicts.
 - Astro is configured for server output via `@astrojs/vercel`, which keeps the booking action and SSR routes aligned with the Vercel runtime.
-- The Astro `site` value is sourced from `SITE_URL` with a local fallback so canonical URLs can resolve to the deployed origin in production.
+- The Astro `site` value is sourced only from `SITE_URL`, so canonical URLs can resolve to the deployed origin in production without a localhost fallback.
 - The gateway is intentionally `noindex` and canonically points to the default localized entry rather than competing with the language-specific pages.
 - Booking now posts to a real Astro Action, keeps the current UI, and falls back to native validation plus in-page success/error states.
 - The footer is shared across the site and uses locale-aware, fictional hospitality details so the brand feels operational without implying a real business listing.
@@ -64,7 +64,9 @@
 - The legal pages are shared-language first-release skeletons on purpose; keep them light unless the site gains new operational or tracking requirements.
 - The shared SEO layer now falls back to `/assets/images/pasta-lab-og-default.png` for Open Graph and Twitter previews, with `Layout` and `Seo` accepting optional image overrides for future page-specific cards.
 - The compact PL monogram now powers the favicon, PNG fallbacks, and Apple touch icon so the browser/app identity matches the broader brand system.
-- The canonical `site` value still comes from `SITE_URL`; in Vercel, set that env var to the production origin so share links and hreflang URLs remain correct.
+- The canonical `site` value now comes only from `SITE_URL`; in Vercel, set that env var to the production origin so share links, hreflang URLs, and structured data resolve to the deployed origin without a localhost fallback.
+- The booking form now posts to the Astro Action endpoint through a same-origin fetch enhancement on the client, which keeps the production console clean without changing the visible success/error flow.
+- The booking visual slot uses caption semantics instead of an extra heading so the page keeps a clean heading hierarchy for accessibility and Lighthouse.
 
 ## Practical Gaps
 
@@ -72,6 +74,7 @@
 - Menu content is centralized, but the next step is to refine the page into a slightly richer editorial system if menu depth grows.
 - Social preview assets are still basic; a dedicated branded OG image would be the next visual polish step if needed.
 - The current visual frames are placeholders by design and should be swapped for final imagery once the photography set is produced.
+- The booking form is client-enhanced but still action-driven; if the operational backend changes, keep the enhancement pattern aligned with Astro Actions rather than replacing it with a custom API flow.
 - If the footer ever expands, keep it restrained and avoid turning it into a general sitemap block.
 - If a dark or inverse logo variant is introduced later, it should be mapped through the same shared `BrandMark` component instead of creating a second header/footer implementation.
 - If the current logo still needs refinement in a later review, the next adjustment should be made in the shared `BrandMark` sizing props rather than adding one-off CSS overrides in route files.
