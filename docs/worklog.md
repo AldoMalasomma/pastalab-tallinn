@@ -190,6 +190,11 @@
 - Refined the privacy, cookie, terms, accessibility, and colophon pages so they clearly distinguish the fictional hospitality brand from the real operator behind the portfolio.
 - Kept the legal layer concise and professional, with no extra boilerplate beyond what supports a credible first public release.
 
+## 2026-04-02 - Legal route aliasing
+
+- Added English-prefixed legal routes and a small middleware redirect so the policy pages have a clean production path even if root-level links or stale deploys are involved.
+- Updated the footer legal links to point directly at the English route set, keeping the compliance layer shared-language and easier to maintain.
+
 ## 2026-04-02 - Open Graph preview system
 
 - Added a default social preview card built from the wide hero image and a warm editorial text treatment.

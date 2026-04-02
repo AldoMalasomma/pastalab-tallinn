@@ -35,11 +35,11 @@ export const creatorBridge = {
 } as const;
 
 export const legalLinks: LegalLink[] = [
-  { label: "Privacy Policy", href: "/privacy-policy/" },
-  { label: "Cookie Policy", href: "/cookie-policy/" },
-  { label: "Accessibility Statement", href: "/accessibility-statement/" },
-  { label: "Terms of Use", href: "/terms-of-use/" },
-  { label: "Portfolio Disclosure", href: "/colophon/" },
+  { label: "Privacy Policy", href: "/en/privacy-policy/" },
+  { label: "Cookie Policy", href: "/en/cookie-policy/" },
+  { label: "Accessibility Statement", href: "/en/accessibility-statement/" },
+  { label: "Terms of Use", href: "/en/terms-of-use/" },
+  { label: "Portfolio Disclosure", href: "/en/colophon/" },
 ];
 
 export const footerDisclosureByLocale: Record<Locale, FooterDisclosure> = {

@@ -62,7 +62,7 @@ Those names should anchor the story of how the room works without drifting into 
 - The site should disclose its portfolio status at footer level rather than in the hero so the restaurant illusion stays intact.
 - The disclosure language should stay concise, elegant, and believable: enough to avoid deception, not enough to collapse the hospitality worldbuilding.
 - The real creator bridge lives beside the disclosure and points to Aldo G. Malasomma / CopyCodeAI / `hello@copycodeai.online`.
-- Legal pages can remain shared-language skeletons until the project needs a fuller operational policy set or a CMS-backed content workflow.
+- Legal pages can remain shared-language skeletons until the project needs a fuller operational policy set or a CMS-backed content workflow; in the current release they live in the English route set with root aliases redirecting for convenience.
 - Keep the legal layer visually quiet and structurally separate from the editorial content hierarchy.
 
 ## Content Guardrails
