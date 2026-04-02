@@ -48,6 +48,7 @@ Current route structure:
 - Menu pages live at `/it/menu`, `/en/menu`, `/et/menu`, and `/ru/menu`
 - House pages live at `/it/house`, `/en/house`, `/et/house`, and `/ru/house`
 - Booking pages live at `/it/booking`, `/en/booking`, `/et/booking`, and `/ru/booking`
+- Legal and compliance pages live inside the same locale namespaces, and the old root-level legal URLs redirect to the default locale for legacy compatibility only.
 
 ## Current Implementation Notes
 

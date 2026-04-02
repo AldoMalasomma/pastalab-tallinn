@@ -34,12 +34,27 @@ export const creatorBridge = {
   href: "mailto:hello@copycodeai.online",
 } as const;
 
-export const legalLinks: LegalLink[] = [
-  { label: "Privacy Policy", href: "/en/privacy-policy/" },
-  { label: "Cookie Policy", href: "/en/cookie-policy/" },
-  { label: "Accessibility Statement", href: "/en/accessibility-statement/" },
-  { label: "Terms of Use", href: "/en/terms-of-use/" },
-  { label: "Portfolio Disclosure", href: "/en/colophon/" },
+const legalRoutes = [
+  { label: "Privacy Policy", slug: "privacy-policy" },
+  { label: "Cookie Policy", slug: "cookie-policy" },
+  { label: "Accessibility Statement", slug: "accessibility-statement" },
+  { label: "Terms of Use", slug: "terms-of-use" },
+  { label: "Portfolio Disclosure", slug: "colophon" },
+];
+
+export function getLegalLinks(lang: Locale): LegalLink[] {
+  return legalRoutes.map((link) => ({
+    label: link.label,
+    href: `/${lang}/${link.slug}/`,
+  }));
+}
+
+export const legacyLegalRoutes = [
+  "/privacy-policy/",
+  "/cookie-policy/",
+  "/accessibility-statement/",
+  "/terms-of-use/",
+  "/colophon/",
 ];
 
 export const footerDisclosureByLocale: Record<Locale, FooterDisclosure> = {

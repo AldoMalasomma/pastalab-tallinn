@@ -192,8 +192,14 @@
 
 ## 2026-04-02 - Legal route aliasing
 
-- Added English-prefixed legal routes and a small middleware redirect so the policy pages have a clean production path even if root-level links or stale deploys are involved.
-- Updated the footer legal links to point directly at the English route set, keeping the compliance layer shared-language and easier to maintain.
+- Added locale-scoped legal routes and a small middleware redirect so the policy pages have a clean production path even if root-level links or stale deploys are involved.
+- Updated the footer legal links to point directly at the active locale route set, keeping the compliance layer shared-language and easier to maintain.
+
+## 2026-04-02 - Locale-scoped legal routing
+
+- Moved the compliance pages into each locale namespace so `/it`, `/en`, `/et`, and `/ru` all keep their own legal routes.
+- Kept the legal copy centralized in one shared component and data file while making the footer generate locale-aware links from the active language.
+- Preserved the old root legal URLs only as redirects to the default locale for legacy compatibility.
 
 ## 2026-04-02 - Open Graph preview system
 
