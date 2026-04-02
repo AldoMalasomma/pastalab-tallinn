@@ -279,8 +279,6 @@ const bookingActionPath = getActionPath(actions.bookingRequest);
 </main>
 
 <script type="module">
-  import { parse as parseDevalue } from "devalue";
-
   const form = document.querySelector("[data-booking-form]");
   const formPanel = document.querySelector("[data-booking-form-panel]");
   const successPanel = document.querySelector("[data-booking-success]");
@@ -357,6 +355,36 @@ const bookingActionPath = getActionPath(actions.bookingRequest);
     typeof error.fields === "object" &&
     error.fields !== null;
 
+  const reviveDevalueReference = (reference, values) => {
+    const node = values[reference];
+
+    if (Array.isArray(node)) {
+      return node.map((item) => reviveDevalueReference(item, values));
+    }
+
+    if (node !== null && typeof node === "object") {
+      const result = {};
+
+      for (const [key, value] of Object.entries(node)) {
+        result[key] = reviveDevalueReference(value, values);
+      }
+
+      return result;
+    }
+
+    return node;
+  };
+
+  const parseDevaluePayload = (bodyText) => {
+    const values = JSON.parse(bodyText);
+
+    if (!Array.isArray(values)) {
+      throw new Error("Invalid booking action payload.");
+    }
+
+    return reviveDevalueReference(0, values);
+  };
+
   const submitBookingRequest = async (bookingForm) => {
     const response = await fetch(bookingForm.action, {
       method: "POST",
@@ -374,7 +402,7 @@ const bookingActionPath = getActionPath(actions.bookingRequest);
       }
 
       return {
-        data: parseDevalue(bodyText),
+        data: parseDevaluePayload(bodyText),
         error: void 0,
       };
     }

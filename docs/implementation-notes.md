@@ -66,6 +66,7 @@
 - The compact PL monogram now powers the favicon, PNG fallbacks, and Apple touch icon so the browser/app identity matches the broader brand system.
 - The canonical `site` value now comes only from `SITE_URL`; in Vercel, set that env var to the production origin so share links, hreflang URLs, and structured data resolve to the deployed origin without a localhost fallback.
 - The booking form now posts to the Astro Action endpoint through a same-origin fetch enhancement on the client, which keeps the production console clean without changing the visible success/error flow.
+- The booking enhancement script now parses the current action payload with a tiny local JSON + unflatten helper instead of importing `devalue` in the browser, which avoids unresolved module specifier errors on production pages.
 - The booking visual slot uses caption semantics instead of an extra heading so the page keeps a clean heading hierarchy for accessibility and Lighthouse.
 
 ## Practical Gaps

@@ -208,3 +208,9 @@
 - Removed the hardcoded `http://localhost:4321` site fallback from Astro config so deployed metadata no longer carries a localhost-origin default.
 - Downgraded the booking visual slot title from a semantic heading to a caption-style label so the homepage and booking pages keep a valid heading tree.
 - Kept the booking UI, validation states, and visible design unchanged apart from the semantic and runtime cleanup needed for production QA.
+
+## 2026-04-02 - Booking devalue cleanup
+
+- Removed the client-side `devalue` package import from the booking enhancement script after it surfaced as an unresolved browser module specifier in production.
+- Replaced it with a small local JSON parse plus devalue-array unflatten step, which is enough for the current booking action payload shape and keeps the browser bundle free of runtime imports.
+- Preserved the same form submission, pending state, error handling, and success summary behavior so the booking UX stays unchanged.
