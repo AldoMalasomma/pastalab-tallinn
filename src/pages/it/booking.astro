@@ -1,0 +1,16 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import BookingPage from "../../components/BookingPage.astro";
+import { bookingContent } from "../../data/booking";
+
+const c = bookingContent.it;
+---
+
+<Layout
+  title={c.pageTitle}
+  description={c.seo.description}
+  lang="it"
+  path="booking"
+>
+  <BookingPage content={c} />
+</Layout>

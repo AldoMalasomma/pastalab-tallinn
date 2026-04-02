@@ -1,0 +1,16 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { homeContent } from "../../data/home";
+import LocaleHome from "../../components/LocaleHome.astro";
+
+const c = homeContent.et;
+---
+
+<Layout
+  title={c.pageTitle}
+  description={c.seo.description}
+  lang="et"
+  path=""
+>
+  <LocaleHome lang="et" content={c} />
+</Layout>

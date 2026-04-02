@@ -1,0 +1,14 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import MenuPage from "../../components/MenuPage.astro";
+import { menuContent } from "../../data/menu";
+---
+
+<Layout
+  title={menuContent.et.pageTitle}
+  description={menuContent.et.seo.description}
+  lang="et"
+  path="menu"
+>
+  <MenuPage lang="et" content={menuContent.et} />
+</Layout>

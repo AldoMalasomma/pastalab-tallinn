@@ -1,23 +1,71 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Seo from "../components/Seo.astro";
+import StructuredData from "../components/StructuredData.astro";
+import type { Locale } from "../i18n/ui";
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+interface Props {
+  title?: string;
+  description?: string;
+  lang?: string;
+  path?: string;
+  canonicalUrl?: string;
+  noindex?: boolean;
+  ogImage?: string;
+  ogImageAlt?: string;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
+}
+
+const {
+  title = "Pasta Lab & Smoked Flavors",
+  description = "Pasta Lab & Smoked Flavors is a Tallinn pasta bistro where handmade fresh pasta meets smoked and fermented Baltic ingredients.",
+  lang = "it",
+  path = "",
+  canonicalUrl,
+  noindex = false,
+  ogImage,
+  ogImageAlt,
+  ogImageWidth,
+  ogImageHeight,
+} = Astro.props as Props;
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#171614" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <Seo
+      title={title}
+      description={description}
+      lang={lang as Locale}
+      path={path}
+      canonicalUrl={canonicalUrl}
+      noindex={noindex}
+      ogImage={ogImage}
+      ogImageAlt={ogImageAlt}
+      ogImageWidth={ogImageWidth}
+      ogImageHeight={ogImageHeight}
+    />
+    <StructuredData
+      lang={lang as Locale}
+      path={path}
+      canonicalUrl={canonicalUrl}
+      noindex={noindex}
+    />
+  </head>
+  <body class="min-h-screen overflow-x-hidden bg-cream text-ink antialiased">
+    <Header />
+    <slot />
+    <Footer lang={lang as Locale} />
+  </body>
+</html>

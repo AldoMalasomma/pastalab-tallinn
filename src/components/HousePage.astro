@@ -1,0 +1,200 @@
+---
+import EditorialVisual from "./EditorialVisual.astro";
+import type { HouseContent } from "../data/house";
+import { getLocalizedPath, type Locale } from "../i18n/ui";
+
+interface Props {
+  lang: Locale;
+  content: HouseContent;
+}
+
+const { lang, content } = Astro.props as Props;
+---
+
+<main class="relative isolate overflow-hidden">
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+    <div class="absolute inset-x-0 top-0 h-[32rem] bg-[radial-gradient(circle_at_top,rgba(164,90,42,0.16),transparent_55%),linear-gradient(180deg,rgba(255,255,255,0.82),rgba(245,239,230,0))]"></div>
+    <div class="absolute left-1/2 top-16 h-72 w-72 -translate-x-1/2 rounded-full bg-copper/10 blur-3xl"></div>
+    <div class="absolute right-0 top-56 h-80 w-80 translate-x-1/3 rounded-full bg-olive/10 blur-3xl"></div>
+  </div>
+
+  <section class="mx-auto max-w-7xl px-6 pb-14 pt-16 lg:px-8 lg:pb-16 lg:pt-20">
+    <div class="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+      <div class="max-w-3xl">
+        <p class="inline-flex rounded-full border border-copper/20 bg-white/80 px-4 py-2 text-xs uppercase tracking-[0.24em] text-copper shadow-sm backdrop-blur">
+          {content.hero.eyebrow}
+        </p>
+
+        <h1 class="mt-6 max-w-4xl text-5xl font-semibold leading-[0.92] tracking-[-0.04em] text-ink sm:text-6xl lg:text-7xl xl:text-[5.25rem]">
+          {content.hero.title}
+        </h1>
+
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-smoke">
+          {content.hero.subtitle}
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a
+            href={getLocalizedPath(lang, "menu")}
+            class="inline-flex items-center rounded-full bg-copper px-6 py-3.5 text-sm font-medium text-white transition hover:opacity-90"
+          >
+            {content.hero.primaryCta}
+          </a>
+          <a
+            href={getLocalizedPath(lang, "booking")}
+            class="inline-flex items-center rounded-full border border-ink/10 bg-white/85 px-6 py-3.5 text-sm font-medium text-ink transition hover:bg-white"
+          >
+            {content.hero.secondaryCta}
+          </a>
+        </div>
+      </div>
+
+      <aside class="lg:pt-4">
+        <EditorialVisual slot="houseIntro" loading="eager" />
+      </aside>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:py-16">
+    <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+      <div>
+        <p class="text-xs uppercase tracking-[0.24em] text-copper">
+          {content.story.eyebrow}
+        </p>
+        <h2 class="mt-4 max-w-xl text-3xl font-semibold tracking-[-0.03em] text-ink sm:text-4xl lg:text-5xl">
+          {content.story.title}
+        </h2>
+      </div>
+
+      <div class="space-y-5">
+        <p class="max-w-3xl text-lg leading-8 text-smoke">{content.story.text}</p>
+        <div class="rounded-[1.75rem] border border-ink/10 bg-white p-6 shadow-sm">
+          <p class="text-xs uppercase tracking-[0.24em] text-copper">
+            {content.story.pullQuoteLabel}
+          </p>
+          <p class="mt-4 text-2xl font-semibold leading-tight tracking-[-0.03em] text-ink">
+            {content.story.pullQuote}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:py-16">
+    <div class="rounded-[2.25rem] border border-ink/10 bg-white p-7 shadow-sm md:p-8 lg:p-10">
+      <p class="text-xs uppercase tracking-[0.24em] text-copper">
+        {content.founders.eyebrow}
+      </p>
+      <div class="mt-4 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <h2 class="max-w-2xl text-3xl font-semibold tracking-[-0.03em] text-ink sm:text-4xl lg:text-5xl">
+          {content.founders.title}
+        </h2>
+        <p class="max-w-2xl text-base leading-7 text-smoke">
+          {content.founders.text}
+        </p>
+      </div>
+
+      <div class="mt-8 grid gap-4 lg:grid-cols-3">
+        {content.founders.members.map((member) => (
+          <article class="rounded-[1.5rem] border border-ink/10 bg-cream/40 p-5">
+            <p class="text-[11px] uppercase tracking-[0.24em] text-smoke">
+              {member.role}
+            </p>
+            <h3 class="mt-3 text-xl font-semibold text-ink">{member.name}</h3>
+            <p class="mt-4 text-sm leading-7 text-smoke">{member.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:py-16">
+    <div class="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+      <div>
+        <p class="text-xs uppercase tracking-[0.24em] text-copper">
+          {content.house.eyebrow}
+        </p>
+        <h2 class="mt-4 max-w-xl text-3xl font-semibold tracking-[-0.03em] text-ink sm:text-4xl lg:text-5xl">
+          {content.house.title}
+        </h2>
+      </div>
+
+      <div>
+        <p class="max-w-3xl text-lg leading-8 text-smoke">{content.house.text}</p>
+        <div class="mt-8 grid gap-4 md:grid-cols-3">
+          {content.house.principles.map((principle) => (
+            <article class="rounded-[1.5rem] border border-ink/10 bg-white p-5 shadow-sm">
+              <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-ink">
+                {principle.title}
+              </h3>
+              <p class="mt-3 text-sm leading-7 text-smoke">{principle.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:py-16">
+    <div class="rounded-[2.5rem] bg-ink text-white shadow-[0_30px_90px_-45px_rgba(29,29,27,0.7)]">
+      <div class="grid lg:grid-cols-[1.05fr_0.95fr]">
+        <div class="p-8 md:p-10 lg:p-12">
+          <p class="text-xs uppercase tracking-[0.24em] text-copper/80">
+            {content.rituals.eyebrow}
+          </p>
+          <h2 class="mt-4 max-w-2xl text-3xl font-semibold tracking-[-0.03em] sm:text-4xl lg:text-5xl">
+            {content.rituals.title}
+          </h2>
+          <p class="mt-6 max-w-2xl text-base leading-8 text-white/75">
+            {content.rituals.text}
+          </p>
+        </div>
+
+        <div class="border-t border-white/10 p-8 md:p-10 lg:border-l lg:border-t-0 lg:p-12">
+          <div class="grid gap-4 sm:grid-cols-2">
+            {content.rituals.items.map((item) => (
+              <article class="rounded-[1.35rem] border border-white/10 bg-white/5 p-4">
+                <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-white">
+                  {item.title}
+                </h3>
+                <p class="mt-3 text-sm leading-7 text-white/70">
+                  {item.text}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:py-16">
+    <div class="rounded-[2.25rem] bg-[linear-gradient(135deg,rgba(29,29,27,1),rgba(45,42,37,1))] p-8 text-white md:p-10 lg:p-12">
+      <p class="text-xs uppercase tracking-[0.24em] text-copper/80">
+        {content.cta.eyebrow}
+      </p>
+      <div class="mt-4 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+        <h2 class="max-w-2xl text-3xl font-semibold tracking-[-0.03em] sm:text-4xl lg:text-5xl">
+          {content.cta.title}
+        </h2>
+        <p class="max-w-2xl text-base leading-7 text-white/75">
+          {content.cta.text}
+        </p>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a
+          href={getLocalizedPath(lang, "menu")}
+          class="inline-flex items-center rounded-full bg-copper px-6 py-3.5 text-sm font-medium text-white transition hover:opacity-90"
+        >
+          {content.cta.primaryCta}
+        </a>
+        <a
+          href={getLocalizedPath(lang, "booking")}
+          class="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-medium text-white transition hover:bg-white/10"
+        >
+          {content.cta.secondaryCta}
+        </a>
+      </div>
+    </div>
+  </section>
+</main>

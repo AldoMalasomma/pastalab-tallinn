@@ -1,0 +1,14 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import HousePage from "../../components/HousePage.astro";
+import { houseContent } from "../../data/house";
+---
+
+<Layout
+  title={houseContent.it.pageTitle}
+  description={houseContent.it.seo.description}
+  lang="it"
+  path="house"
+>
+  <HousePage lang="it" content={houseContent.it} />
+</Layout>

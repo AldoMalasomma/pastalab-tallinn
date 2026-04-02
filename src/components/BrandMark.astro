@@ -1,0 +1,21 @@
+---
+import BrandLogo from "./BrandLogo.astro";
+
+interface Props {
+  href: string;
+  class?: string;
+  imageClass?: string;
+  variant?: "primary" | "signature" | "monogram";
+}
+
+const {
+  href,
+  class: className = "",
+  imageClass = "",
+  variant = "primary",
+} = Astro.props as Props;
+---
+
+<a href={href} class={`inline-flex items-center ${className}`} aria-label="Pasta Lab & Smoked Flavors">
+  <BrandLogo variant={variant} class={imageClass} />
+</a>

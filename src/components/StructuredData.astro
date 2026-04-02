@@ -1,0 +1,75 @@
+---
+import { getLocalizedPath, type Locale } from "../i18n/ui";
+import { hospitalityBusiness, hospitalityContent } from "../data/hospitality";
+
+interface Props {
+  lang: Locale;
+  path?: string;
+  canonicalUrl?: string;
+  noindex?: boolean;
+}
+
+const { lang, path = "", canonicalUrl, noindex = false } = Astro.props as Props;
+
+if (noindex) {
+  return;
+}
+
+const siteUrl = Astro.site ?? Astro.url;
+const restaurantUrl = new URL(hospitalityBusiness.urlPath, siteUrl).toString();
+const menuUrl = new URL(getLocalizedPath(lang, "menu"), siteUrl).toString();
+const bookingUrl = new URL(getLocalizedPath(lang, "booking"), siteUrl).toString();
+const pageUrl = new URL(canonicalUrl ?? getLocalizedPath(lang, path), siteUrl).toString();
+const content = hospitalityContent[lang];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Restaurant",
+      "@id": `${restaurantUrl}#restaurant`,
+      name: hospitalityBusiness.name,
+      description: content.schemaDescription,
+      url: restaurantUrl,
+      servesCuisine: ["Italian", "Baltic"],
+      acceptsReservations: true,
+      menu: menuUrl,
+      sameAs: hospitalityBusiness.sameAs,
+      telephone: hospitalityBusiness.telephone,
+      email: hospitalityBusiness.email,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: hospitalityBusiness.address.streetAddress,
+        postalCode: hospitalityBusiness.address.postalCode,
+        addressLocality: hospitalityBusiness.address.addressLocality,
+        addressRegion: hospitalityBusiness.address.addressRegion,
+        addressCountry: hospitalityBusiness.address.addressCountry,
+      },
+      openingHoursSpecification: hospitalityBusiness.openingHoursSpecification,
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          contactType: hospitalityBusiness.contactType,
+          telephone: hospitalityBusiness.telephone,
+          email: hospitalityBusiness.email,
+          availableLanguage: ["it", "en", "et", "ru"],
+        },
+      ],
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: content.title,
+      inLanguage: lang,
+      isPartOf: {
+        "@id": `${restaurantUrl}#restaurant`,
+      },
+    },
+  ],
+};
+
+const jsonLd = JSON.stringify(schema).replace(/</g, "\\u003c");
+---
+
+<script type="application/ld+json" set:html={jsonLd}></script>

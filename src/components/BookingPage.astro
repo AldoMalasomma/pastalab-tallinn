@@ -1,0 +1,435 @@
+---
+import { actions, getActionPath } from "astro:actions";
+import EditorialVisual from "./EditorialVisual.astro";
+import BookingField from "./BookingField.astro";
+import type { BookingContent } from "../data/booking";
+
+interface Props {
+  content: BookingContent;
+}
+
+const { content } = Astro.props as Props;
+const bookingActionPath = getActionPath(actions.bookingRequest);
+---
+
+<main class="relative isolate overflow-hidden">
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+    <div class="absolute inset-x-0 top-0 h-[28rem] bg-[radial-gradient(circle_at_top,rgba(164,90,42,0.18),transparent_60%),linear-gradient(180deg,rgba(255,255,255,0.85),rgba(245,239,230,0))]"></div>
+    <div class="absolute left-1/2 top-10 h-72 w-72 -translate-x-1/2 rounded-full bg-copper/10 blur-3xl"></div>
+    <div class="absolute right-0 top-52 h-80 w-80 translate-x-1/3 rounded-full bg-olive/10 blur-3xl"></div>
+  </div>
+
+  <section class="mx-auto max-w-[88rem] px-4 pb-12 pt-12 sm:px-6 lg:px-8 lg:pb-16 lg:pt-20">
+    <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+      <div class="max-w-2xl">
+        <p class="inline-flex rounded-full border border-copper/20 bg-white/80 px-4 py-2 text-xs uppercase tracking-[0.24em] text-copper shadow-sm backdrop-blur">
+          {content.hero.eyebrow}
+        </p>
+
+        <h1 class="mt-6 text-4xl font-semibold leading-[0.95] tracking-[-0.04em] text-ink sm:text-5xl lg:text-7xl">
+          {content.hero.title}
+        </h1>
+
+        <p class="mt-6 max-w-xl text-base leading-7 text-smoke sm:text-lg sm:leading-8">
+          {content.hero.subtitle}
+        </p>
+
+        <div class="mt-8 grid gap-3 sm:mt-10 sm:grid-cols-3">
+          {content.hero.details.map((detail) => (
+            <div class="rounded-2xl border border-ink/10 bg-white/80 p-4 shadow-sm backdrop-blur">
+              <p class="text-[11px] uppercase tracking-[0.24em] text-smoke">
+                {detail.label}
+              </p>
+              <p class="mt-2 text-base font-semibold text-ink">{detail.value}</p>
+              <p class="mt-2 text-sm leading-6 text-smoke">{detail.text}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-10">
+          <EditorialVisual slot="bookingAside" />
+        </div>
+
+        <div class="mt-10 rounded-[2rem] border border-ink/10 bg-white/80 p-5 shadow-sm backdrop-blur sm:p-6">
+          <p class="text-xs uppercase tracking-[0.24em] text-copper">
+            {content.sidebar.eyebrow}
+          </p>
+          <h2 class="mt-4 text-2xl font-semibold tracking-[-0.03em] text-ink sm:text-3xl">
+            {content.sidebar.title}
+          </h2>
+          <p class="mt-4 max-w-2xl text-sm leading-7 text-smoke">
+            {content.sidebar.text}
+          </p>
+          <div class="mt-6 grid gap-4 sm:grid-cols-3">
+            {content.sidebar.cards.map((card) => (
+              <article class="rounded-[1.35rem] border border-ink/10 bg-cream/50 p-4">
+                <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-ink">
+                  {card.title}
+                </h3>
+                <p class="mt-3 text-sm leading-7 text-smoke">{card.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-[2.25rem] border border-ink/10 bg-white p-5 shadow-[0_28px_70px_-40px_rgba(29,29,27,0.45)] md:p-8 lg:sticky lg:top-6">
+        <div data-booking-form-panel>
+          <p class="text-xs uppercase tracking-[0.24em] text-copper">
+            {content.form.eyebrow}
+          </p>
+          <h2 class="mt-4 text-2xl font-semibold tracking-[-0.03em] text-ink sm:text-3xl">
+            {content.form.title}
+          </h2>
+          <p class="mt-4 max-w-2xl text-sm leading-7 text-smoke">
+            {content.form.intro}
+          </p>
+
+          <div
+            data-booking-alert
+            hidden
+            class="mt-6 rounded-[1.5rem] border border-copper/20 bg-[linear-gradient(135deg,rgba(245,239,230,0.95),rgba(255,255,255,1))] p-5 shadow-sm"
+            aria-live="assertive"
+          >
+            <p class="text-xs uppercase tracking-[0.24em] text-copper">
+              {content.form.error.eyebrow}
+            </p>
+            <h3 class="mt-3 text-lg font-semibold tracking-[-0.02em] text-ink">
+              {content.form.error.title}
+            </h3>
+            <p class="mt-2 text-sm leading-7 text-smoke">
+              {content.form.error.text}
+            </p>
+            <button
+              type="button"
+              data-booking-alert-retry
+              class="mt-4 inline-flex items-center rounded-full border border-ink/10 bg-white px-4 py-2 text-sm font-medium text-ink transition hover:bg-black/5"
+            >
+              {content.form.error.retryLabel}
+            </button>
+          </div>
+
+          <form
+            data-booking-form
+            class="mt-8 space-y-8"
+            action={bookingActionPath}
+            method="post"
+            data-field-message={content.form.error.fieldMessage}
+            data-submit-label={content.form.submitLabel}
+            data-pending-label={content.form.pendingLabel}
+          >
+            <fieldset class="space-y-5">
+              <legend class="text-sm font-semibold uppercase tracking-[0.18em] text-ink">
+                {content.form.sections.visit}
+              </legend>
+
+              <div class="grid gap-5 sm:grid-cols-2">
+                <BookingField
+                  label={content.form.fields.date.label}
+                  name="date"
+                  type="date"
+                  help={content.form.fields.date.help}
+                  autocomplete="off"
+                />
+                <BookingField
+                  label={content.form.fields.time.label}
+                  name="time"
+                  type="time"
+                  help={content.form.fields.time.help}
+                  autocomplete="off"
+                  step="900"
+                  min="18:00"
+                  max="22:30"
+                />
+              </div>
+
+              <div class="max-w-xs">
+                <BookingField
+                  label={content.form.fields.guests.label}
+                  name="guests"
+                  type="number"
+                  help={content.form.fields.guests.help}
+                  min="1"
+                  max="8"
+                  step="1"
+                  placeholder="2"
+                  autocomplete="off"
+                />
+              </div>
+            </fieldset>
+
+            <fieldset class="space-y-5">
+              <legend class="text-sm font-semibold uppercase tracking-[0.18em] text-ink">
+                {content.form.sections.contact}
+              </legend>
+
+              <div class="grid gap-5 sm:grid-cols-2">
+                <BookingField
+                  label={content.form.fields.name.label}
+                  name="name"
+                  help={content.form.fields.name.help}
+                  placeholder={content.form.fields.name.label}
+                  autocomplete="name"
+                />
+                <BookingField
+                  label={content.form.fields.email.label}
+                  name="email"
+                  type="email"
+                  help={content.form.fields.email.help}
+                  placeholder="name@example.com"
+                  autocomplete="email"
+                />
+              </div>
+            </fieldset>
+
+            <fieldset class="space-y-5">
+              <legend class="text-sm font-semibold uppercase tracking-[0.18em] text-ink">
+                {content.form.sections.notes}
+              </legend>
+
+              <BookingField
+                label={content.form.fields.notes.label}
+                name="notes"
+                type="textarea"
+                help={content.form.fields.notes.help}
+                placeholder={content.form.fields.notes.placeholder}
+                rows={5}
+                required={false}
+              />
+            </fieldset>
+
+            <div class="flex flex-col gap-4 border-t border-ink/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+              <button
+                type="submit"
+                data-booking-submit
+                class="inline-flex w-full items-center justify-center rounded-full bg-copper px-6 py-3.5 text-sm font-medium text-white transition hover:opacity-90 sm:w-auto"
+              >
+                {content.form.submitLabel}
+              </button>
+              <p class="max-w-sm text-sm leading-6 text-smoke">
+                {content.form.helper}
+              </p>
+            </div>
+          </form>
+
+          <p class="mt-5 text-xs uppercase tracking-[0.18em] text-smoke">
+            {content.form.actionNote}
+          </p>
+        </div>
+
+        <div data-booking-success hidden class="space-y-6" aria-live="polite">
+          <div class="rounded-[1.75rem] border border-copper/20 bg-[linear-gradient(135deg,rgba(245,239,230,0.95),rgba(255,255,255,1))] p-5 sm:p-6">
+            <p class="text-xs uppercase tracking-[0.24em] text-copper">
+              {content.form.success.eyebrow}
+            </p>
+            <h2 class="mt-4 text-2xl font-semibold tracking-[-0.03em] text-ink sm:text-3xl">
+              {content.form.success.title}
+            </h2>
+            <p class="mt-4 max-w-2xl text-sm leading-7 text-smoke">
+              {content.form.success.text}
+            </p>
+            <div class="mt-6 rounded-[1.5rem] border border-ink/10 bg-white/80 p-4">
+              <p class="text-[11px] uppercase tracking-[0.24em] text-copper">
+                {content.form.success.referenceLabel}
+              </p>
+              <p data-booking-reference class="mt-2 text-sm font-medium text-ink"></p>
+            </div>
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-3">
+            <div class="rounded-[1.5rem] border border-ink/10 bg-cream/45 p-4">
+              <p class="text-[11px] uppercase tracking-[0.24em] text-smoke">
+                {content.form.fields.date.label}
+              </p>
+              <p data-summary-date class="mt-2 text-sm font-medium text-ink"></p>
+            </div>
+            <div class="rounded-[1.5rem] border border-ink/10 bg-cream/45 p-4">
+              <p class="text-[11px] uppercase tracking-[0.24em] text-smoke">
+                {content.form.fields.time.label}
+              </p>
+              <p data-summary-time class="mt-2 text-sm font-medium text-ink"></p>
+            </div>
+            <div class="rounded-[1.5rem] border border-ink/10 bg-cream/45 p-4">
+              <p class="text-[11px] uppercase tracking-[0.24em] text-smoke">
+                {content.form.fields.guests.label}
+              </p>
+              <p data-summary-guests class="mt-2 text-sm font-medium text-ink"></p>
+            </div>
+          </div>
+
+          <div class="rounded-[1.75rem] border border-ink/10 bg-white p-5 shadow-sm">
+            <p class="text-xs uppercase tracking-[0.24em] text-copper">
+              {content.form.sections.contact}
+            </p>
+            <p data-summary-contact class="mt-4 text-sm leading-7 text-smoke"></p>
+            <p data-summary-notes class="mt-4 text-sm leading-7 text-smoke"></p>
+          </div>
+
+          <button
+            type="button"
+            data-booking-reset
+            class="inline-flex items-center justify-center rounded-full border border-ink/10 bg-white px-6 py-3.5 text-sm font-medium text-ink transition hover:bg-black/5"
+          >
+            {content.form.success.resetLabel}
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script type="module">
+  import { actions, isInputError } from "astro:actions";
+
+  const form = document.querySelector("[data-booking-form]");
+  const formPanel = document.querySelector("[data-booking-form-panel]");
+  const successPanel = document.querySelector("[data-booking-success]");
+  const alertPanel = document.querySelector("[data-booking-alert]");
+  const resetButton = document.querySelector("[data-booking-reset]");
+  const retryButton = document.querySelector("[data-booking-alert-retry]");
+  const submitButton = document.querySelector("[data-booking-submit]");
+  const dateInput = document.querySelector('input[name="date"]');
+  const fieldMessage =
+    form instanceof HTMLFormElement ? form.dataset.fieldMessage ?? "" : "";
+  const submitLabel =
+    form instanceof HTMLFormElement ? form.dataset.submitLabel ?? "" : "";
+  const pendingLabel =
+    form instanceof HTMLFormElement ? form.dataset.pendingLabel ?? "" : "";
+
+  if (
+    !(form instanceof HTMLFormElement) ||
+    !(formPanel instanceof HTMLElement) ||
+    !(successPanel instanceof HTMLElement)
+  ) {
+    throw new Error("Booking form elements were not found.");
+  }
+
+  if (dateInput instanceof HTMLInputElement) {
+    dateInput.min = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Europe/Tallinn",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).format(new Date());
+  }
+
+  const summaryDate = successPanel.querySelector("[data-summary-date]");
+  const summaryTime = successPanel.querySelector("[data-summary-time]");
+  const summaryGuests = successPanel.querySelector("[data-summary-guests]");
+  const summaryContact = successPanel.querySelector("[data-summary-contact]");
+  const summaryNotes = successPanel.querySelector("[data-summary-notes]");
+  const summaryReference = successPanel.querySelector("[data-booking-reference]");
+
+  const clearCustomValidity = () => {
+    for (const element of Array.from(form.elements)) {
+      if (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement) {
+        element.setCustomValidity("");
+      }
+    }
+  };
+
+  const setPendingState = (isPending) => {
+    if (!(submitButton instanceof HTMLButtonElement)) return;
+
+    submitButton.disabled = isPending;
+    submitButton.textContent = isPending ? pendingLabel : submitLabel;
+    form.setAttribute("aria-busy", String(isPending));
+  };
+
+  const showAlert = () => {
+    if (alertPanel instanceof HTMLElement) {
+      alertPanel.hidden = false;
+    }
+  };
+
+  const hideAlert = () => {
+    if (alertPanel instanceof HTMLElement) {
+      alertPanel.hidden = true;
+    }
+  };
+
+  form.addEventListener("input", (event) => {
+    const target = event.target;
+    if (target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement) {
+      target.setCustomValidity("");
+    }
+  });
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    clearCustomValidity();
+    hideAlert();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    setPendingState(true);
+
+    try {
+      const result = await actions.bookingRequest(new FormData(form));
+
+      if (result.error) {
+        if (isInputError(result.error)) {
+          for (const fieldName of Object.keys(result.error.fields)) {
+            const control = form.elements.namedItem(fieldName);
+
+            if (control instanceof HTMLInputElement || control instanceof HTMLTextAreaElement) {
+              control.setCustomValidity(fieldMessage);
+            }
+          }
+
+          form.reportValidity();
+          showAlert();
+          alertPanel?.scrollIntoView({ behavior: "smooth", block: "start" });
+          return;
+        }
+
+        showAlert();
+        alertPanel?.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+
+      const values = result.data.summary;
+      if (summaryReference) summaryReference.textContent = result.data.reference;
+      if (summaryDate) summaryDate.textContent = values.date;
+      if (summaryTime) summaryTime.textContent = values.time;
+      if (summaryGuests) summaryGuests.textContent = String(values.guests);
+      if (summaryContact) {
+        summaryContact.textContent = `${values.name} · ${values.email}`;
+      }
+      if (summaryNotes) {
+        const noteText = values.notes?.trim();
+        summaryNotes.hidden = !noteText;
+        summaryNotes.textContent = noteText ? `Notes: ${noteText}` : "";
+      }
+
+      formPanel.hidden = true;
+      successPanel.hidden = false;
+      successPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+    } catch {
+      showAlert();
+      alertPanel?.scrollIntoView({ behavior: "smooth", block: "start" });
+    } finally {
+      setPendingState(false);
+    }
+  });
+
+  if (resetButton instanceof HTMLButtonElement) {
+    resetButton.addEventListener("click", () => {
+      successPanel.hidden = true;
+      formPanel.hidden = false;
+      hideAlert();
+      form.reset();
+      form.querySelector("input, textarea")?.focus();
+    });
+  }
+
+  if (retryButton instanceof HTMLButtonElement) {
+    retryButton.addEventListener("click", () => {
+      hideAlert();
+      form.querySelector("input, textarea")?.focus();
+    });
+  }
+</script>
