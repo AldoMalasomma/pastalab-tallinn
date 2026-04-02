@@ -180,9 +180,15 @@
 ## 2026-04-02 - Portfolio compliance layer
 
 - Added a subtle footer-level portfolio disclosure so the site can signal its project status without breaking the restaurant illusion.
-- Added a creator/contact bridge for Ajia and lightweight legal placeholders for privacy, cookies, accessibility, terms, and colophon routes.
+- Added a creator/contact bridge and lightweight legal placeholders for privacy, cookies, accessibility, terms, and colophon routes.
 - Kept the legal pages shared-language and intentionally restrained so they read as a polished first release rather than a heavy compliance system.
 - Updated the content strategy and implementation notes so the portfolio layer is documented as part of the intended product shape.
+
+## 2026-04-02 - Compliance operator alignment
+
+- Replaced the visible creator reference with Aldo G. Malasomma / CopyCodeAI and updated the shared footer bridge to use the live contact email.
+- Refined the privacy, cookie, terms, accessibility, and colophon pages so they clearly distinguish the fictional hospitality brand from the real operator behind the portfolio.
+- Kept the legal layer concise and professional, with no extra boilerplate beyond what supports a credible first public release.
 
 ## 2026-04-02 - Open Graph preview system
 

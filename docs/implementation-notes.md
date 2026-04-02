@@ -68,6 +68,7 @@
 - The booking form now posts to the Astro Action endpoint through a same-origin fetch enhancement on the client, which keeps the production console clean without changing the visible success/error flow.
 - The booking enhancement script now parses the current action payload with a tiny local JSON + unflatten helper instead of importing `devalue` in the browser, which avoids unresolved module specifier errors on production pages.
 - The booking visual slot uses caption semantics instead of an extra heading so the page keeps a clean heading hierarchy for accessibility and Lighthouse.
+- The footer disclosure and legal pages now point to Aldo G. Malasomma / CopyCodeAI as the real operator, keeping the fictional restaurant world distinct from the portfolio's actual contact and compliance layer.
 
 ## Practical Gaps
 

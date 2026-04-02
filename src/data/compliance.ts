@@ -27,9 +27,11 @@ type LegalLink = {
 
 export const creatorBridge = {
   label: "Design and development",
-  name: "Ajia",
-  email: "a.g.malasomma@gmail.com",
-  href: "mailto:a.g.malasomma@gmail.com",
+  name: "Aldo G. Malasomma",
+  business: "CopyCodeAI",
+  location: "Tallinn, Estonia",
+  email: "hello@copycodeai.online",
+  href: "mailto:hello@copycodeai.online",
 } as const;
 
 export const legalLinks: LegalLink[] = [
@@ -43,19 +45,19 @@ export const legalLinks: LegalLink[] = [
 export const footerDisclosureByLocale: Record<Locale, FooterDisclosure> = {
   it: {
     label: "Portfolio",
-    text: "Progetto portfolio. Dati del locale fittizi; design e sviluppo reali di Ajia.",
+    text: "Progetto portfolio. Brand e dettagli del locale fittizi; design, sviluppo e conformità reali di Aldo G. Malasomma / CopyCodeAI.",
   },
   en: {
     label: "Portfolio",
-    text: "Portfolio concept. Fictional venue details; real design and development by Ajia.",
+    text: "Portfolio concept. Fictional brand and venue details; real design, development, and compliance by Aldo G. Malasomma / CopyCodeAI.",
   },
   et: {
     label: "Portfoolio",
-    text: "Portfoolio projekt. Fiktiivsed kohadetailid; disain ja arendus Ajia poolt.",
+    text: "Portfoolio projekt. Fiktiivne bränd ja kohadetailid; tegelik disain, arendus ja vastavus Aldo G. Malasomma / CopyCodeAI poolt.",
   },
   ru: {
     label: "Портфолио",
-    text: "Портфолио-проект. Вымышленные данные заведения; дизайн и разработка — Ajia.",
+    text: "Портфолио-проект. Бренд и данные заведения вымышлены; реальный дизайн, разработка и комплаенс — Aldo G. Malasomma / CopyCodeAI.",
   },
 };
 
@@ -67,26 +69,26 @@ export const legalPageContent = {
     eyebrow: "Legal",
     title: "Privacy Policy",
     intro:
-      "This page outlines how the site handles bookings, contact requests, and lightweight operational data.",
+      "This site is a portfolio concept presented as a fictional hospitality brand. Any information submitted through forms, or needed for technical site operation, is handled by the real operator behind the portfolio: Aldo G. Malasomma / CopyCodeAI, Tallinn, Estonia.",
     sections: [
       {
-        title: "Bookings",
+        title: "Information you submit",
         body: [
-          "Information entered in the booking form is used to review reservation requests and reply by email.",
-          "The site does not currently process payments or public account data.",
+          "Booking and contact details are used only to review requests and respond to you.",
+          "The site does not currently process payments, public accounts, or customer databases.",
         ],
       },
       {
-        title: "Site operations",
+        title: "Technical data",
         body: [
-          "Basic technical data may be used to keep the site reliable and improve performance.",
-          "Any future analytics or tracking will be disclosed and added with a consent-aware approach.",
+          "Basic request metadata or server logs may be processed to keep the site secure, reliable, and debuggable.",
+          "If the technical setup changes, this page will be updated before any broader use of the data.",
         ],
       },
       {
         title: "Contact",
         body: [
-          `Questions about this site can be sent to ${creatorBridge.email}.`,
+          `Questions about privacy or data handling can be sent to ${creatorBridge.email}.`,
         ],
       },
     ],
@@ -98,18 +100,19 @@ export const legalPageContent = {
     eyebrow: "Legal",
     title: "Cookie Policy",
     intro:
-      "The site is designed to stay light on tracking. Essential functionality comes first.",
+      "The site is designed to stay light on tracking and does not intentionally use non-essential cookies or analytics tools.",
     sections: [
       {
-        title: "Essential cookies",
+        title: "Essential functionality",
         body: [
-          "The site may use cookies or storage required for core functionality, such as form handling or session behavior.",
+          "If any browser or hosting state is required for core delivery or form handling, it is limited to essential functionality.",
+          "At present, there is no separate advertising or measurement cookie layer on the site.",
         ],
       },
       {
-        title: "Future analytics",
+        title: "Future changes",
         body: [
-          "If analytics or embedded services are added later, they should be documented here and introduced with consent where required.",
+          "If analytics or embedded services are added later, this policy will be updated before they go live.",
         ],
       },
     ],
@@ -121,20 +124,26 @@ export const legalPageContent = {
     eyebrow: "Legal",
     title: "Accessibility Statement",
     intro:
-      "The site aims for semantic structure, readable type, clear contrast, and keyboard-friendly navigation.",
+      "This accessibility statement covers the portfolio concept site operated by Aldo G. Malasomma / CopyCodeAI. The current build aims to align with WCAG 2.1 AA and EN 301 549 principles in structure, contrast, readability, and interaction.",
     sections: [
       {
-        title: "What is covered",
+        title: "What is in place",
         body: [
-          "Navigation, booking forms, and core content blocks are built to work cleanly across mobile and desktop.",
-          "The current design keeps hierarchy visible without relying on motion to make the interface understandable.",
+          "Navigation, booking forms, and core content blocks are built to work across mobile and desktop with semantic headings and visible hierarchy.",
+          "The design keeps information understandable without depending on motion or decorative effects.",
         ],
       },
       {
-        title: "Ongoing work",
+        title: "Known limits",
         body: [
-          "Visual assets should continue to carry descriptive alt text and should be reviewed whenever the imagery changes.",
-          "If a formal audit is needed, this page can be expanded into a tracked statement.",
+          "The site has not yet been subjected to a formal independent accessibility audit.",
+          "Visual assets should continue to receive descriptive alt text and should be reviewed whenever imagery changes.",
+        ],
+      },
+      {
+        title: "Feedback",
+        body: [
+          `If you encounter an accessibility issue, contact ${creatorBridge.email}.`,
         ],
       },
     ],
@@ -146,18 +155,18 @@ export const legalPageContent = {
     eyebrow: "Legal",
     title: "Terms of Use",
     intro:
-      "This site presents a portfolio concept for a fictional hospitality brand and is not a booking contract.",
+      "This site presents a portfolio concept for a fictional hospitality brand and is not a live booking contract.",
     sections: [
       {
         title: "Concept status",
         body: [
-          "Brand, venue, and hospitality details are fictional and used to demonstrate design, UX, and content strategy.",
+          "The brand, venue, hospitality details, and reservation context are fictional and used to demonstrate design, UX, and content strategy.",
         ],
       },
       {
-        title: "Use of the site",
+        title: "Original work",
         body: [
-          "Content is provided for review, demonstration, and portfolio purposes.",
+          "The design, development, UX, and technical implementation are original work by Aldo G. Malasomma / CopyCodeAI.",
           "Any future operational use should be paired with formal legal review and business-specific terms.",
         ],
       },
@@ -170,7 +179,7 @@ export const legalPageContent = {
     eyebrow: "Portfolio",
     title: "Portfolio Disclosure / Colophon",
     intro:
-      "A short note on what is fictional in the brand world and what is real in the build.",
+      "A concise note on the boundary between the fictional hospitality world and the real operator behind the build.",
     sections: [
       {
         title: "Project",
@@ -180,9 +189,9 @@ export const legalPageContent = {
         ],
       },
       {
-        title: "Creator",
+        title: "Real operator",
         body: [
-          `Design and development by ${creatorBridge.name}.`,
+          `${creatorBridge.name} / ${creatorBridge.business} is the real operator and compliance contact behind the portfolio project.`,
           `Contact: ${creatorBridge.email}.`,
         ],
       },
@@ -193,7 +202,7 @@ export const legalPageContent = {
         ],
       },
     ],
-    note: "Portfolio concept. Fictional brand and venue details; real design and development by Ajia.",
+    note: "Portfolio concept. Fictional brand and venue details; real design, development, and compliance by Aldo G. Malasomma / CopyCodeAI.",
   },
 } as const satisfies Record<string, LegalPageContent>;
 
