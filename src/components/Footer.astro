@@ -106,7 +106,14 @@ const localizedLink = (slug: string) => getLocalizedPath(lang, slug);
               {creatorBridge.name}
             </a>
             <span class="text-ink/25">/</span>
-            <span>{creatorBridge.business}</span>
+            <a
+              href={creatorBridge.website}
+              target="_blank"
+              rel="noreferrer"
+              class="transition hover:text-copper"
+            >
+              {creatorBridge.business}
+            </a>
             <span class="text-ink/25">•</span>
             <a
               href={creatorBridge.href}

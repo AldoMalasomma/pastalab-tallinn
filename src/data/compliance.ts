@@ -31,6 +31,7 @@ export const creatorBridge = {
   label: "Design and development",
   name: "Aldo G. Malasomma",
   business: "CopyCodeAI",
+  website: "https://copycodeai.online",
   location: "Tallinn, Estonia",
   email: "hello@copycodeai.online",
   href: "mailto:hello@copycodeai.online",

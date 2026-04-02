@@ -74,7 +74,9 @@ const path = pagePaths[page];
             <div class="mt-2 flex flex-col gap-1 text-sm leading-6 text-ink sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3">
               <span class="font-medium">{creatorBridge.name}</span>
               <span class="hidden text-ink/25 sm:inline">•</span>
-              <span>{creatorBridge.business}</span>
+              <a class="transition hover:text-copper" href={creatorBridge.website} target="_blank" rel="noreferrer">
+                {creatorBridge.business}
+              </a>
               <span class="hidden text-ink/25 sm:inline">•</span>
               <span>{creatorBridge.location}</span>
               <span class="hidden text-ink/25 sm:inline">•</span>
