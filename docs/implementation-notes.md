@@ -47,7 +47,7 @@
 - Astro's default-locale redirect is disabled so the branded `/` gateway can coexist with the locale-prefixed routes without build conflicts.
 - Astro is configured for server output via `@astrojs/vercel`, which keeps the booking action and SSR routes aligned with the Vercel runtime.
 - The Astro `site` value is sourced only from `SITE_URL`, so canonical URLs can resolve to the deployed origin in production without a localhost fallback.
-- The gateway is intentionally `noindex` and canonically points to the default localized entry rather than competing with the language-specific pages.
+- The gateway is indexable and canonically points to `/`, while the locale pages remain the primary content surfaces for search.
 - Booking now posts to a real Astro Action, keeps the current UI, and falls back to native validation plus in-page success/error states.
 - The footer is shared across the site and uses locale-aware, fictional hospitality details so the brand feels operational without implying a real business listing.
 - Structured data is injected from the shared layout so the Restaurant and WebPage schema remain in step with the locale-specific pages without cluttering route files.

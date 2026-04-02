@@ -36,7 +36,7 @@
 - Added a shared SEO helper in `src/components/Seo.astro` so canonical URLs, hreflang alternates, Open Graph basics, and robots directives are generated consistently from the shared layout.
 - Added localized page titles and descriptions to the homepage, menu, and booking content sources so metadata stays close to the copy it represents.
 - Configured the Astro `site` value from `SITE_URL` so the same SEO code can resolve to the deployed origin in production.
-- Kept the root gateway intentionally `noindex` and pointed it at the default localized entry so it does not compete with the indexed locale pages.
+- Kept the root gateway indexable and canonicalized to `/` so it can act as a lightweight entry point without a blocking robots directive.
 - Updated the backlog and implementation notes to reflect that page-level SEO is now in place and that the next gaps are operational and visual rather than structural.
 
 ## 2026-04-01 - Booking action pass
