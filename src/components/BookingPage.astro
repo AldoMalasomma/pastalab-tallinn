@@ -179,6 +179,16 @@ const bookingActionPath = getActionPath(actions.bookingRequest);
                   placeholder="name@example.com"
                   autocomplete="email"
                 />
+                <div class="sm:col-span-2">
+                  <BookingField
+                    label={content.form.fields.phone.label}
+                    name="phone"
+                    type="tel"
+                    help={content.form.fields.phone.help}
+                    autocomplete="tel"
+                    required={false}
+                  />
+                </div>
               </div>
             </fieldset>
 
@@ -470,7 +480,8 @@ const bookingActionPath = getActionPath(actions.bookingRequest);
       if (summaryTime) summaryTime.textContent = values.time;
       if (summaryGuests) summaryGuests.textContent = String(values.guests);
       if (summaryContact) {
-        summaryContact.textContent = `${values.name} · ${values.email}`;
+        const contactParts = [values.name, values.email, values.phone?.trim()].filter(Boolean);
+        summaryContact.textContent = contactParts.join(" · ");
       }
       if (summaryNotes) {
         const noteText = values.notes?.trim();

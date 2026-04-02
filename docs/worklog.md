@@ -46,6 +46,13 @@
 - Kept the booking page layout intact while adding pending, error, and success states that are driven by the action result.
 - Recorded the remaining operational gap: persistence and email delivery are still future backend work, but the request path is now real.
 
+## 2026-04-02 - Booking contact refinement
+
+- Added an optional phone field to the booking form so the request reads more like a real hospitality contact flow while keeping email as the required confirmation channel.
+- Kept the field localized across `it`, `en`, `et`, and `ru`, with concise help text that explains phone is useful for quick updates or timing changes.
+- Updated the booking schema and success summary so the Astro Action still handles the same flow while accepting empty phone values safely.
+- Noted the booking data model change in the implementation notes and tech architecture docs so the contact logic stays aligned across the codebase.
+
 ## 2026-04-01 - Hospitality footer pass
 
 - Added a shared footer and contact layer in `src/components/Footer.astro` with locale-aware hospitality details from `src/data/hospitality.ts`.

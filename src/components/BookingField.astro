@@ -2,7 +2,7 @@
 interface Props {
   label: string;
   name: string;
-  type?: "text" | "email" | "date" | "time" | "number" | "textarea";
+  type?: "text" | "email" | "date" | "time" | "number" | "tel" | "textarea";
   help?: string;
   placeholder?: string;
   required?: boolean;
@@ -59,7 +59,7 @@ const baseClasses =
         min={min}
         max={max}
         step={step}
-        inputmode={type === "number" ? "numeric" : undefined}
+        inputmode={type === "number" ? "numeric" : type === "tel" ? "tel" : undefined}
         autocomplete={autocomplete}
         aria-describedby={describedBy}
         class={baseClasses}

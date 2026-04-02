@@ -22,7 +22,7 @@ The site is organized as a small Astro app with shared layout and localized page
 - `src/components/HousePage.astro` centralizes the new House narrative page
 - `src/actions/index.ts` is the Astro Actions entrypoint and currently exports the booking request action
 - `src/data/home.ts` stores the localized homepage content
-- `src/data/menu.ts` and `src/data/booking.ts` store localized page copy plus the metadata used by the shared layout
+- `src/data/menu.ts` and `src/data/booking.ts` store localized page copy plus the metadata used by the shared layout; the booking model now treats email as required and phone as optional contact support
 - `src/data/house.ts` stores the localized House narrative, founder roles, and brand rituals
 - `src/data/imagery.ts` stores the planned image-slot system and crop guidance
 - `public/favicon.svg` provides the compact monogram mark for browser UI; `public/favicon.ico`, `public/favicon-32x32.png`, `public/favicon-16x16.png`, and `public/apple-touch-icon.png` provide browser and mobile fallbacks

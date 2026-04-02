@@ -18,6 +18,20 @@ type Field = {
   placeholder?: string;
 };
 
+const PHONE_MIN_DIGITS = 7;
+const PHONE_MAX_DIGITS = 15;
+const PHONE_PATTERN = /^[+\d\s().-]+$/;
+
+function isLikelyPhoneNumber(value: string) {
+  const digitsOnly = value.replace(/\D/g, "");
+
+  return (
+    PHONE_PATTERN.test(value) &&
+    digitsOnly.length >= PHONE_MIN_DIGITS &&
+    digitsOnly.length <= PHONE_MAX_DIGITS
+  );
+}
+
 export const bookingSchema = z.object({
   date: z
     .string()
@@ -46,6 +60,15 @@ export const bookingSchema = z.object({
     .string()
     .trim()
     .email("Please enter a valid email address"),
+  phone: z
+    .string()
+    .trim()
+    .max(40, "Please keep the phone number under 40 characters")
+    .optional()
+    .default("")
+    .refine((value) => value === "" || isLikelyPhoneNumber(value), {
+      message: "Please enter a valid phone number",
+    }),
   notes: z
     .string()
     .trim()
@@ -88,14 +111,15 @@ export type BookingContent = {
       contact: string;
       notes: string;
     };
-    fields: {
-      date: Field;
-      time: Field;
-      guests: Field;
-      name: Field;
-      email: Field;
-      notes: Field;
-    };
+      fields: {
+        date: Field;
+        time: Field;
+        guests: Field;
+        name: Field;
+        email: Field;
+        phone: Field;
+        notes: Field;
+      };
     submitLabel: string;
     pendingLabel: string;
     helper: string;
@@ -182,7 +206,11 @@ export const bookingContent = {
         },
         email: {
           label: "Email",
-          help: "Invieremo qui la conferma.",
+          help: "Obbligatoria. Invieremo qui la conferma.",
+        },
+        phone: {
+          label: "Telefono",
+          help: "Facoltativo. Utile per aggiornamenti rapidi o variazioni dell’ultimo momento.",
         },
         notes: {
           label: "Note",
@@ -292,7 +320,11 @@ export const bookingContent = {
         },
         email: {
           label: "Email",
-          help: "We’ll send the confirmation here.",
+          help: "Required. We’ll send the confirmation here.",
+        },
+        phone: {
+          label: "Phone",
+          help: "Optional. Useful for quick updates or timing changes.",
         },
         notes: {
           label: "Notes",
@@ -402,7 +434,11 @@ export const bookingContent = {
         },
         email: {
           label: "E-post",
-          help: "Kinnituse saadame siia.",
+          help: "Kohustuslik. Saadame kinnituse siia.",
+        },
+        phone: {
+          label: "Telefon",
+          help: "Valikuline. Kasulik kiireteks uuendusteks või ajamuutusteks.",
         },
         notes: {
           label: "Märkmed",
@@ -512,7 +548,11 @@ export const bookingContent = {
         },
         email: {
           label: "Email",
-          help: "Подтверждение придёт сюда.",
+          help: "Обязательно. Подтверждение придёт сюда.",
+        },
+        phone: {
+          label: "Телефон",
+          help: "Необязательно. Полезно для быстрых уточнений или изменения времени.",
         },
         notes: {
           label: "Заметки",
