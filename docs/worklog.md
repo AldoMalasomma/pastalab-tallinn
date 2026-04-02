@@ -198,7 +198,7 @@
 ## 2026-04-02 - Locale-scoped legal routing
 
 - Moved the compliance pages into each locale namespace so `/it`, `/en`, `/et`, and `/ru` all keep their own legal routes.
-- Kept the legal copy centralized in one shared component and data file while making the footer generate locale-aware links from the active language.
+- Kept the legal copy localized per locale but centralized in one shared component and data file while making the footer generate locale-aware links from the active language.
 - Preserved the old root legal URLs only as redirects to the default locale for legacy compatibility.
 
 ## 2026-04-02 - Open Graph preview system

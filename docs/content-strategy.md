@@ -63,7 +63,7 @@ Those names should anchor the story of how the room works without drifting into 
 - The disclosure language should stay concise, elegant, and believable: enough to avoid deception, not enough to collapse the hospitality worldbuilding.
 - The real creator bridge lives beside the disclosure and points to Aldo G. Malasomma / CopyCodeAI / `hello@copycodeai.online`.
 - Legal pages should live inside each locale namespace so the footer and public links always resolve within the active language path.
-- The compliance copy can remain shared-language and centrally maintained for now, with route aliases only as legacy support for old root URLs.
+- The compliance copy should be localized per locale but maintained centrally in shared data so the route structure stays thin.
 - Keep the legal layer visually quiet and structurally separate from the editorial content hierarchy.
 
 ## Content Guardrails
