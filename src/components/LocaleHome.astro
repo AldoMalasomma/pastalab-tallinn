@@ -2,6 +2,7 @@
 import EditorialVisual from "./EditorialVisual.astro";
 import type { HomeContent } from "../data/home";
 import { houseContent } from "../data/house";
+import { getResponsiveImage } from "../data/imagery";
 import { getLocalizedPath, type Locale } from "../i18n/ui";
 
 interface Props {
@@ -11,6 +12,7 @@ interface Props {
 
 const { lang, content } = Astro.props as Props;
 const house = houseContent[lang];
+const homeHero = getResponsiveImage("homeHero");
 ---
 
 <main class="relative isolate overflow-hidden">
@@ -33,14 +35,18 @@ const house = houseContent[lang];
   <section class="mx-auto max-w-[88rem] px-4 pb-12 pt-8 sm:px-6 lg:px-8 lg:pb-16 lg:pt-10">
     <div class="relative overflow-hidden rounded-[2.5rem] border border-ink/10 bg-ink shadow-[0_36px_100px_-60px_rgba(29,29,27,0.85)]">
       <div aria-hidden="true" class="absolute inset-0">
-        <img
-          src="/assets/images/hero-interior-pasta-wide.png"
-          alt=""
-          loading="eager"
-          decoding="async"
-          fetchpriority="high"
-          class="absolute inset-0 h-full w-full object-cover object-[72%_50%] sm:object-[66%_50%] lg:object-[60%_48%]"
-        />
+        <picture>
+          <source type="image/webp" srcset={homeHero.webpSrcSet} sizes={homeHero.sizes} />
+          <img
+            src={homeHero.fallback}
+            alt=""
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+            sizes={homeHero.sizes}
+            class="absolute inset-0 h-full w-full object-cover object-[72%_50%] sm:object-[66%_50%] lg:object-[60%_48%]"
+          />
+        </picture>
         <div class="absolute inset-0 bg-[linear-gradient(110deg,rgba(13,13,12,0.82)_0%,rgba(13,13,12,0.58)_34%,rgba(13,13,12,0.22)_62%,rgba(13,13,12,0.45)_100%),radial-gradient(circle_at_top_right,rgba(164,90,42,0.22),transparent_32%),radial-gradient(circle_at_bottom_left,rgba(90,104,70,0.18),transparent_28%)]"></div>
         <div class="absolute inset-x-0 bottom-0 h-28 bg-[linear-gradient(180deg,transparent,rgba(13,13,12,0.62))]"></div>
       </div>

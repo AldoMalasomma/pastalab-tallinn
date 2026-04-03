@@ -11,6 +11,12 @@ export type VisualSlot = {
   src?: string;
 };
 
+type ResponsiveImage = {
+  fallback: string;
+  webpSrcSet: string;
+  sizes: string;
+};
+
 export const imageryDirection = {
   homeHero: {
     label: "Hero background",
@@ -93,3 +99,62 @@ export const imageryDirection = {
 } as const satisfies Record<string, VisualSlot>;
 
 export type ImagerySlot = keyof typeof imageryDirection;
+
+const responsiveImagery = {
+  homeHero: {
+    fallback: "/assets/images/hero-interior-pasta-wide.png",
+    webpSrcSet: [
+      "/assets/images/generated/hero-interior-pasta-wide-640.webp 640w",
+      "/assets/images/generated/hero-interior-pasta-wide-960.webp 960w",
+      "/assets/images/generated/hero-interior-pasta-wide-1280.webp 1280w",
+      "/assets/images/generated/hero-interior-pasta-wide-1535.webp 1535w",
+    ].join(", "),
+    sizes: "100vw",
+  },
+  menuBanner: {
+    fallback: "/assets/images/smoked-butter-tagliolini-menu.jpg",
+    webpSrcSet: [
+      "/assets/images/generated/smoked-butter-tagliolini-menu-480.webp 480w",
+      "/assets/images/generated/smoked-butter-tagliolini-menu-720.webp 720w",
+      "/assets/images/generated/smoked-butter-tagliolini-menu-960.webp 960w",
+      "/assets/images/generated/smoked-butter-tagliolini-menu-1168.webp 1168w",
+    ].join(", "),
+    sizes: "100vw",
+  },
+  houseIntro: {
+    fallback: "/assets/images/house-interior-hero.jpg",
+    webpSrcSet: [
+      "/assets/images/generated/house-interior-hero-360.webp 360w",
+      "/assets/images/generated/house-interior-hero-540.webp 540w",
+      "/assets/images/generated/house-interior-hero-784.webp 784w",
+    ].join(", "),
+    sizes: "(min-width: 1024px) 40vw, 100vw",
+  },
+  houseBridge: {
+    fallback: "/assets/images/house-interior-hero.jpg",
+    webpSrcSet: [
+      "/assets/images/generated/house-interior-hero-360.webp 360w",
+      "/assets/images/generated/house-interior-hero-540.webp 540w",
+      "/assets/images/generated/house-interior-hero-784.webp 784w",
+    ].join(", "),
+    sizes: "(min-width: 1024px) 48vw, 100vw",
+  },
+  bookingAside: {
+    fallback: "/assets/images/quiet-room-booking.jpg",
+    webpSrcSet: [
+      "/assets/images/generated/quiet-room-booking-360.webp 360w",
+      "/assets/images/generated/quiet-room-booking-540.webp 540w",
+      "/assets/images/generated/quiet-room-booking-784.webp 784w",
+    ].join(", "),
+    sizes: "(min-width: 1024px) 40vw, 100vw",
+  },
+  socialPreview: {
+    fallback: "/assets/images/pasta-lab-og-default.png",
+    webpSrcSet: "/assets/images/generated/pasta-lab-og-default-1200.webp 1200w",
+    sizes: "100vw",
+  },
+} as const satisfies Record<ImagerySlot, ResponsiveImage>;
+
+export function getResponsiveImage(slot: ImagerySlot): ResponsiveImage {
+  return responsiveImagery[slot];
+}

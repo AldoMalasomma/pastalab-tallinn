@@ -1,5 +1,9 @@
 ---
-import { imageryDirection, type ImagerySlot } from "../data/imagery";
+import {
+  imageryDirection,
+  getResponsiveImage,
+  type ImagerySlot,
+} from "../data/imagery";
 
 interface Props {
   slot: ImagerySlot;
@@ -8,6 +12,7 @@ interface Props {
   alt?: string;
   caption?: string;
   loading?: "eager" | "lazy";
+  sizes?: string;
 }
 
 const {
@@ -17,11 +22,14 @@ const {
   alt,
   caption,
   loading = "lazy",
+  sizes,
 } = Astro.props as Props;
 const visual = imageryDirection[slot];
+const responsive = getResponsiveImage(slot);
 const assetSrc = src ?? visual.src;
 const assetAlt = alt ?? visual.alt;
 const assetCaption = caption ?? visual.caption;
+const assetSizes = sizes ?? responsive.sizes;
 const ratioClass =
   visual.ratio === "portrait"
     ? "aspect-[4/5]"
@@ -57,14 +65,20 @@ const copyClass = visual.theme === "dark" ? "text-white/75" : "text-smoke";
     <div class="relative flex h-full flex-col justify-between">
       <div class="relative flex-1 overflow-hidden rounded-[1.5rem] border border-current/10">
         {assetSrc ? (
-          <img
-            src={assetSrc}
-            alt={assetAlt}
-            loading={loading}
-            decoding="async"
-            fetchpriority={loading === "eager" ? "high" : "auto"}
-            class="absolute inset-0 h-full w-full object-cover"
-          />
+          <>
+            <picture>
+              <source type="image/webp" srcset={responsive.webpSrcSet} sizes={assetSizes} />
+              <img
+                src={assetSrc}
+                alt={assetAlt}
+                loading={loading}
+                decoding="async"
+                fetchpriority={loading === "eager" ? "high" : "auto"}
+                sizes={assetSizes}
+                class="absolute inset-0 h-full w-full object-cover"
+              />
+            </picture>
+          </>
         ) : null}
 
         <div class={`absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(164,90,42,0.22),transparent_40%),radial-gradient(circle_at_bottom_left,rgba(90,104,70,0.16),transparent_30%)] ${assetSrc ? "opacity-100" : "opacity-100"}`}></div>
