@@ -17,18 +17,18 @@
 - The header and footer now use separate SVG logo variants from the shared logo component, so the visual hierarchy is clearer and the brand mark is less fragile when scaled.
 - The header now uses a premium mobile overlay menu built with a native `<dialog>`, keeping the desktop navigation visible while giving mobile users a full-screen editorial menu with localized language switching and booking access.
 - Locale homepage rendering is centralized in `src/components/LocaleHome.astro` with a richer section flow.
-- The homepage now includes a compact House bridge that points into the dedicated narrative page without adding a separate visual system.
+- The homepage now includes a compact Story bridge that points into the dedicated narrative page without adding a separate visual system.
 - The homepage hero now has a wider desktop split and more restrained mobile typography so the first screen feels cinematic without turning into a generic full-screen template.
 - The homepage hero now uses `/assets/images/hero-interior-pasta-wide.png` as the primary opening image in a layered background treatment with a wide 3:2 crop.
 - The homepage hero is now built as a layered background scene with overlaid copy, not a contained image card on the right side of the section.
 - The mobile crop is intentionally right-biased so the lamp and pasta bench remain visible without needing a separate mobile hero asset.
 - The hero headline was intentionally reduced and the supporting meta / note content trimmed so the opening frame feels less crowded and more premium.
-- The homepage copy now leans harder on funnel clarity: the hero stays restaurant-forward, the Concept & Story block explains the concept, and The House block explains the people behind it.
+- The homepage copy now leans harder on funnel clarity: the hero stays restaurant-forward, the Concept & Story block explains the concept, and the Story block explains the people behind it.
 - CTA labels were shortened and clarified so the landing flow moves more directly from menu discovery to table reservation.
 - Shared editorial visual frames are centralized in `src/components/EditorialVisual.astro`, which now supports future image `src`, `alt`, and caption values sourced from `src/data/imagery.ts`.
-- The finalized local image assets are mapped in `src/data/imagery.ts` and now drive the homepage hero, House bridge, House page hero, menu banner, and booking visual slots.
+- The finalized local image assets are mapped in `src/data/imagery.ts` and now drive the homepage hero, Story bridge, Story page hero, menu banner, and booking visual slots.
 - Booking pages are centralized in `src/components/BookingPage.astro` with reusable field rendering in `src/components/BookingField.astro`.
-- The House page is centralized in `src/components/HousePage.astro` with localized narrative content in `src/data/house.ts`.
+- The Story page is centralized in `src/components/HousePage.astro` with localized narrative content in `src/data/house.ts`.
 - Localized content source exists in `src/data/home.ts`, including per-locale section labels.
 - Menu pages are now centralized in `src/components/MenuPage.astro` with localized content in `src/data/menu.ts`.
 - Menu and booking pages now use smaller mobile gutters and earlier heading downscales so their long-form content remains readable on narrow screens.
@@ -53,9 +53,9 @@
 - Structured data is injected from the shared layout so the Restaurant and WebPage schema remain in step with the locale-specific pages without cluttering route files.
 - Menu routes now inherit the same brand-specific treatment as the homepage and booking pages, replacing the starter placeholder pages.
 - The homepage, menu, and booking pages now reserve coherent image slots so final photography can be added without changing the layout structure.
-- The House bridge on the homepage and the House page hero aside now have dedicated visual slots that can receive final imagery without a layout rewrite.
-- House routes now extend the locale structure with a small, meaningful narrative page that explains who shapes the room and how the concept is held together.
-- The homepage now acts as a light bridge into the House page by surfacing the three-person narrative and linking to the deeper story.
+- The Story bridge on the homepage and the Story page hero aside now have dedicated visual slots that can receive final imagery without a layout rewrite.
+- Story routes now extend the locale structure with a small, meaningful narrative page that explains who shapes the room and how the concept is held together.
+- The homepage now acts as a light bridge into the Story page by surfacing the three-person narrative and linking to the deeper story.
 - The mobile navigation has been upgraded from a simple collapsed header into a full-screen editorial overlay that preserves locale switching and booking access.
 - The hero image direction now treats the homepage opening shot as a background-forward, wide interior frame rather than a narrow craft close-up.
 - The hero composition should stay layered and restrained; avoid reintroducing a framed hero image card unless the concept changes again.

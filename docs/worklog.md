@@ -1,5 +1,11 @@
 # Worklog
 
+## 2026-04-03 - Story naming pass
+
+- Renamed the user-facing House label to Story across the multilingual navigation, homepage bridge, narrative page titles, CTA labels, and image captions.
+- Kept the existing `/house` route structure and the shared `src/components/HousePage.astro` component in place so the architecture stayed stable while the language layer changed.
+- Updated the localized copy in `src/data/home.ts`, `src/data/house.ts`, `src/data/imagery.ts`, and `src/i18n/ui.ts` to keep the four supported locales aligned.
+
 ## 2026-04-01
 
 - Inspected the current project structure and confirmed this is an Astro 6 hospitality microsite for Pasta Lab & Smoked Flavors.

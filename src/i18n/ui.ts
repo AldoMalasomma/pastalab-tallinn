@@ -13,7 +13,7 @@ export const ui = {
   it: {
     nav: {
       home: "Home",
-      house: "Casa",
+      house: "Storia",
       menu: "Menu",
       booking: "Prenota",
     },
@@ -27,7 +27,7 @@ export const ui = {
   en: {
     nav: {
       home: "Home",
-      house: "House",
+      house: "Story",
       menu: "Menu",
       booking: "Book",
     },
@@ -41,7 +41,7 @@ export const ui = {
   et: {
     nav: {
       home: "Avaleht",
-      house: "Maja",
+      house: "Lugu",
       menu: "Menüü",
       booking: "Broneeri",
     },
@@ -55,7 +55,7 @@ export const ui = {
   ru: {
     nav: {
       home: "Главная",
-      house: "Дом",
+      house: "История",
       menu: "Меню",
       booking: "Бронь",
     },

@@ -39,20 +39,20 @@ export const imageryDirection = {
     src: "/assets/images/smoked-butter-tagliolini-menu.jpg",
   },
   houseIntro: {
-    label: "House portrait",
+    label: "Story portrait",
     title: "Port-side room, warm and precise",
     description:
-      "Use a portrait frame for the house page: a dining room edge, dark wood, copper reflections, linen texture, or a subtle portrait of the space itself.",
+      "Use a portrait frame for the story page: a dining room edge, dark wood, copper reflections, linen texture, or a subtle portrait of the space itself.",
     crop: "4:5",
     ratio: "portrait",
     theme: "dark",
     notes: ["port-side", "dark wood", "linen", "copper"],
-    alt: "Portrait of the House with dark wood, matte copper, linen, and a warm port-side atmosphere.",
-    caption: "House page hero visual",
+    alt: "Portrait for the Story page with dark wood, matte copper, linen, and a warm port-side atmosphere.",
+    caption: "Story page hero visual",
     src: "/assets/images/house-interior-hero.jpg",
   },
   houseBridge: {
-    label: "House bridge",
+    label: "Story bridge",
     title: "Three people, one room, one direction",
     description:
       "Use this narrower portrait frame for the homepage bridge: a partial room view, a subtle founder portrait, or a detail that hints at the people behind the place without turning the page into a team sheet.",
@@ -61,7 +61,7 @@ export const imageryDirection = {
     theme: "light",
     notes: ["founders", "room detail", "editorial", "warmth"],
     alt: "Warm port-side room portrait with dark wood, matte copper, and linen texture.",
-    caption: "Homepage House bridge",
+    caption: "Homepage Story bridge",
     src: "/assets/images/house-interior-hero.jpg",
   },
   bookingAside: {

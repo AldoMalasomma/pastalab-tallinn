@@ -91,7 +91,7 @@ export const homeContent = {
       primaryCta: "Prenota un tavolo",
       secondaryCta: "Vedi il menu",
       meta: [
-        { label: "Fatto in casa", value: "Pasta fresca ogni giorno" },
+        { label: "Fatto sul posto", value: "Pasta fresca ogni giorno" },
         { label: "Profilo", value: "Affumicature leggere, fermentazioni" },
       ],
       panel: {
@@ -105,7 +105,7 @@ export const homeContent = {
         ],
       },
     },
-    story: {
+      story: {
       eyebrow: "Concept & story",
       title: "Tecnica italiana, ingredienti baltici, ritmo chiaro.",
       text:
@@ -113,7 +113,7 @@ export const homeContent = {
       highlights: [
         {
           title: "Handmade",
-          text: "La pasta viene tirata e rifinita in casa, ogni giorno.",
+          text: "La pasta viene tirata e rifinita in cucina, ogni giorno.",
         },
         {
           title: "Local sourcing",
@@ -126,16 +126,16 @@ export const homeContent = {
       ],
     },
     house: {
-      eyebrow: "The House",
-      title: "Tre persone, una sala, un solo ritmo.",
+      eyebrow: "Storia",
+      title: "Tre persone, una sala, una sola storia.",
       text:
-        "Matteo Valli guida la pasta, Liis Saar disegna il lato baltico della casa e Aleksander “Sass” Kõiv tiene il ritmo della sala.",
-      button: "Scopri la casa",
-      note: "Una lettura breve del team che tiene insieme il luogo.",
+        "Matteo Valli guida la pasta, Liis Saar disegna il lato baltico della sala e Aleksander “Sass” Kõiv tiene il ritmo della sala.",
+      button: "Scopri la storia",
+      note: "Una lettura breve sulle persone che tengono insieme il locale.",
     },
     dishes: {
       eyebrow: "Signature dishes",
-      title: "Piatti che definiscono il carattere della casa",
+      title: "Piatti che definiscono il carattere del locale",
       intro:
         "La carta resta essenziale: pochi piatti, molto controllo, una forte identità.",
       items: [
@@ -222,11 +222,11 @@ export const homeContent = {
       primaryCta: "Book a table",
       secondaryCta: "View the menu",
       meta: [
-        { label: "Made in house", value: "Fresh pasta daily" },
+        { label: "Made on site", value: "Fresh pasta daily" },
         { label: "Flavor profile", value: "Smoke, fermentation, Baltic herbs" },
       ],
       panel: {
-        eyebrow: "House note",
+        eyebrow: "Kitchen note",
         title: "Italian technique, Baltic ingredients, one clear rhythm.",
         text:
           "The kitchen keeps the plate count low so the menu, room, and booking path read cleanly.",
@@ -244,7 +244,7 @@ export const homeContent = {
       highlights: [
         {
           title: "Handmade",
-          text: "Pasta is rolled, cut, and finished in house every day.",
+          text: "Pasta is rolled, cut, and finished in the kitchen every day.",
         },
         {
           title: "Local sourcing",
@@ -257,16 +257,16 @@ export const homeContent = {
       ],
     },
     house: {
-      eyebrow: "The House",
-      title: "Three people, one room, one rhythm.",
+      eyebrow: "Story",
+      title: "Three people, one room, one story.",
       text:
-        "Matteo leads the pasta, Liis shapes the Baltic side of the house, and Aleksander keeps the floor in step.",
-      button: "Meet the house",
-      note: "A brief read on the team behind the room.",
+        "Matteo leads the pasta, Liis shapes the Baltic side of the room, and Aleksander keeps the floor in step.",
+      button: "Discover the story",
+      note: "A brief read on the people behind the room.",
     },
     dishes: {
       eyebrow: "Signature dishes",
-      title: "Plates that define the house character",
+      title: "Plates that define the room's character",
       intro:
         "The menu stays compact by design: fewer plates, more control, a clearer identity.",
       items: [
@@ -357,7 +357,7 @@ export const homeContent = {
         { label: "Maitseprofiil", value: "Suits, fermentatsioon, Balti ürdid" },
       ],
       panel: {
-        eyebrow: "Maja märkus",
+        eyebrow: "Köögi märkus",
         title: "Itaalia tehnika, kohalikud koostisosad, selge rütm.",
         text:
           "Köök hoiab taldrikute arvu väikesena, et menüü, ruum ja broneerimine oleksid kohe loetavad.",
@@ -388,16 +388,16 @@ export const homeContent = {
       ],
     },
     house: {
-      eyebrow: "Maja",
-      title: "Kolm inimest, üks ruum, üks rütm.",
+      eyebrow: "Lugu",
+      title: "Kolm inimest, üks ruum, üks lugu.",
       text:
-        "Matteo juhib pastat, Liis kujundab maja Balti poole ja Aleksander hoiab saali rütmi.",
-      button: "Tutvu majaga",
+        "Matteo juhib pastat, Liis kujundab ruumi Balti poole ja Aleksander hoiab saali rütmi.",
+      button: "Tutvu looga",
       note: "Lühike lugemine inimestest, kes ruumi koos hoiavad.",
     },
     dishes: {
       eyebrow: "Signature dishes",
-      title: "Road, mis annavad majale iseloomu",
+      title: "Road, mis annavad ruumile iseloomu",
       intro:
         "Menüü on teadlikult lühike: vähem taldrikuid, rohkem kontrolli, selgem identiteet.",
       items: [
@@ -484,7 +484,7 @@ export const homeContent = {
       primaryCta: "Забронировать стол",
       secondaryCta: "Посмотреть меню",
       meta: [
-        { label: "Сделано в доме", value: "Свежая паста каждый день" },
+        { label: "Сделано на месте", value: "Свежая паста каждый день" },
         { label: "Профиль вкуса", value: "Дым, ферментация, балтийские травы" },
       ],
       panel: {
@@ -519,16 +519,16 @@ export const homeContent = {
       ],
     },
     house: {
-      eyebrow: "Дом",
-      title: "Трое людей, один зал, один ритм.",
+      eyebrow: "История",
+      title: "Трое людей, один зал, одна история.",
       text:
-        "Matteo ведёт пасту, Liis формирует балтийскую сторону дома, а Aleksander держит ритм зала.",
-      button: "Познакомиться с домом",
-      note: "Короткое чтение о команде, которая собирает пространство.",
+        "Matteo ведёт пасту, Liis формирует балтийскую сторону зала, а Aleksander держит ритм зала.",
+      button: "Познакомиться с историей",
+      note: "Короткое чтение о людях, которые держат пространство вместе.",
     },
     dishes: {
       eyebrow: "Signature dishes",
-      title: "Блюда, задающие характер дома",
+      title: "Блюда, задающие характер зала",
       intro:
         "Меню специально короткое: меньше позиций, больше контроля и более чёткая идентичность.",
       items: [
