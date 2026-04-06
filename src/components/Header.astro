@@ -118,11 +118,11 @@ const mobileMenuId = "mobile-navigation";
         </button>
       </div>
 
-      <div class="mt-8 border-t border-ink/10 pt-5">
+      <div class="mt-5 border-t border-ink/10 pt-4">
         <p class="text-[11px] uppercase tracking-[0.26em] text-copper">
           {headerLabel}
         </p>
-        <nav class="mt-4 space-y-3">
+        <nav class="mt-3 space-y-3">
           {
             navItems.map((item, index) => {
               const isActive = currentSlug === item.slug;
@@ -157,11 +157,30 @@ const mobileMenuId = "mobile-navigation";
         </nav>
       </div>
 
-      <div class="mt-8 border-t border-ink/10 pt-5">
+      <div class="mt-5 border-t border-ink/10 pt-4">
+        <div class="flex flex-col gap-3 sm:flex-row">
+          <a
+            href={getLocalizedPath(lang, "booking")}
+            class="inline-flex flex-1 items-center justify-center rounded-full bg-copper px-6 py-3.5 text-sm font-medium text-white transition hover:opacity-90"
+            data-menu-link
+          >
+            {t("nav", "booking")}
+          </a>
+          <a
+            href={getLocalizedPath(lang, "menu")}
+            class="inline-flex flex-1 items-center justify-center rounded-full border border-ink/10 bg-white px-6 py-3.5 text-sm font-medium text-ink transition hover:bg-black/5"
+            data-menu-link
+          >
+            {t("nav", "menu")}
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-5 border-t border-ink/10 pt-4">
         <p class="text-[11px] uppercase tracking-[0.26em] text-copper">
           {t("header", "language")}
         </p>
-        <div class="mt-4 flex flex-wrap gap-2">
+        <div class="mt-3 flex flex-wrap gap-2">
           {
             Object.entries(languages).map(([code, label]) => (
               <a
@@ -178,25 +197,6 @@ const mobileMenuId = "mobile-navigation";
               </a>
             ))
           }
-        </div>
-      </div>
-
-      <div class="mt-auto pt-8">
-        <div class="flex flex-col gap-3 sm:flex-row">
-          <a
-            href={getLocalizedPath(lang, "booking")}
-            class="inline-flex flex-1 items-center justify-center rounded-full bg-copper px-6 py-3.5 text-sm font-medium text-white transition hover:opacity-90"
-            data-menu-link
-          >
-            {t("nav", "booking")}
-          </a>
-          <a
-            href={getLocalizedPath(lang, "menu")}
-            class="inline-flex flex-1 items-center justify-center rounded-full border border-ink/10 bg-white px-6 py-3.5 text-sm font-medium text-ink transition hover:bg-black/5"
-            data-menu-link
-          >
-            {t("nav", "menu")}
-          </a>
         </div>
       </div>
     </div>
