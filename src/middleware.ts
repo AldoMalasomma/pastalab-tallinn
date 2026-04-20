@@ -11,6 +11,14 @@ const legalRedirects = Object.fromEntries(
 
 export const onRequest = defineMiddleware(async (context, next) => {
   const pathname = context.url.pathname.replace(/\/$/, "") || "/";
+
+  if (pathname === "/") {
+    const target = new URL(getLocalizedPath(defaultLang), context.url);
+    target.search = context.url.search;
+
+    return Response.redirect(target, 302);
+  }
+
   const target = legalRedirects[pathname];
 
   if (target) {
