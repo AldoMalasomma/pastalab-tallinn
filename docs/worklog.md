@@ -1,5 +1,11 @@
 # Worklog
 
+## 2026-04-20 - Root locale redirect
+
+- Removed the language gateway from `/` and redirected the root path straight to the Estonian home page.
+- Aligned the project default locale with `et` so canonical links, hreflang output, and legacy redirects all point to the same primary locale.
+- Updated the architecture and implementation notes to match the new entry flow and keep the docs consistent with the live site.
+
 ## 2026-04-03 - Story naming pass
 
 - Renamed the user-facing House label to Story across the multilingual navigation, homepage bridge, narrative page titles, CTA labels, and image captions.

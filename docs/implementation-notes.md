@@ -37,17 +37,18 @@
 - The same hospitality data now feeds the footer and JSON-LD schema, keeping the business details consistent across UI and search metadata.
 - Language labels and routing helpers live in `src/i18n/ui.ts`.
 - The brand identity is now explicitly documented and should be treated as a fixed implementation constraint, not a draft concept.
+- The root path now redirects directly to the Estonian home page, so the site opens on real content instead of a separate language-choice step.
 
 ## Route Notes
 
 - The site is structured around locale-prefixed pages for `it`, `en`, `et`, and `ru`.
 - Menu and booking routes exist for each locale.
-- The root `src/pages/index.astro` is now a minimal branded language gateway instead of the Astro starter welcome screen.
+- The root `src/pages/index.astro` no longer serves content; `/` is handled by middleware and redirects to `/et/`.
 - Starter assets and the `Welcome.astro` scaffold were removed as part of the cleanup.
-- Astro's default-locale redirect is disabled so the branded `/` gateway can coexist with the locale-prefixed routes without build conflicts.
+- Astro's default-locale redirect is disabled so the locale-prefixed routes can stay explicit while `/` is handled by a small redirect in middleware.
 - Astro is configured for server output via `@astrojs/vercel`, which keeps the booking action and SSR routes aligned with the Vercel runtime.
 - The Astro `site` value is sourced only from `SITE_URL`, so canonical URLs can resolve to the deployed origin in production without a localhost fallback.
-- The gateway is indexable and canonically points to `/`, while the locale pages remain the primary content surfaces for search.
+- The root redirect should stay lightweight and should preserve query strings so campaign parameters survive the hop to `/et/`.
 - Booking now posts to a real Astro Action, keeps the current UI, and falls back to native validation plus in-page success/error states.
 - The footer is shared across the site and uses locale-aware, fictional hospitality details so the brand feels operational without implying a real business listing.
 - Structured data is injected from the shared layout so the Restaurant and WebPage schema remain in step with the locale-specific pages without cluttering route files.

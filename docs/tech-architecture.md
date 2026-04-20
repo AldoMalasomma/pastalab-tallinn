@@ -33,7 +33,7 @@ The site is organized as a small Astro app with shared layout and localized page
 
 Astro i18n is configured in `astro.config.mjs` with:
 
-- default locale: `it`
+- default locale: `et`
 - locales: `it`, `en`, `et`, `ru`
 - `prefixDefaultLocale: true`
 - `redirectToDefaultLocale: false`
@@ -43,7 +43,7 @@ Astro i18n is configured in `astro.config.mjs` with:
 
 Current route structure:
 
-- `/` is a branded language gateway in `src/pages/index.astro`
+- `/` redirects to the Estonian home page in `src/middleware.ts`
 - Locale homepages live at `/it/`, `/en/`, `/et/`, and `/ru/`
 - Menu pages live at `/it/menu`, `/en/menu`, `/et/menu`, and `/ru/menu`
 - House pages live at `/it/house`, `/en/house`, `/et/house`, and `/ru/house`
